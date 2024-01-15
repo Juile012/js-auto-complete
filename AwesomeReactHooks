@@ -1,0 +1,23 @@
+// useCustomHook.js
+import { useState, useEffect } from 'react';
+
+const useCustomHook = (initialValue) => {
+  const [value, setValue] = useState(initialValue);
+
+  useEffect(() => {
+    // 특정 사이드 이펙트 로직 추가
+    document.title = `Custom Hook Value: ${value}`;
+  }, [value]);
+
+  const increment = () => {
+    setValue(value + 1);
+  };
+
+  const decrement = () => {
+    setValue(value - 1);
+  };
+
+  return { value, increment, decrement };
+};
+
+export default useCustomHook;
